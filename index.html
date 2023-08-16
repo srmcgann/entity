@@ -65,7 +65,7 @@ async function Draw(){
       }
     }
     Q=()=>[c.width/2+X/Z*700,c.height/2+Y/Z*700]
-    I=(A,B,M,D,E,F,G,H)=>(K=((G-E)*(B-F)-(H-F)*(A-E))/(J=(H-F)*(M-A)-(G-E)*(D-B)))>=0&&K&lt;=1&&(L=((M-A)*(B-F)-(D-B)*(A-E))/J)>=0&&L&lt;=1?[A+K*(M-A),B+K*(D-B)]:0
+    I=(A,B,M,D,E,F,G,H)=>(K=((G-E)*(B-F)-(H-F)*(A-E))/(J=(H-F)*(M-A)-(G-E)*(D-B)))>=0&&K<=1&&(L=((M-A)*(B-F)-(D-B)*(A-E))/J)>=0&&L<=1?[A+K*(M-A),B+K*(D-B)]:0
     
     Rn = Math.random
     async function loadOBJ(url, scale, tx, ty, tz, rl, pt, yw) {
@@ -180,7 +180,7 @@ async function Draw(){
           Z2 = q[2]
           if(i!=j){
             d = Math.hypot(a=X1-X2, b=Y1-Y2, e=Z1-Z2)
-            if(d&lt;mind) mind = d
+            if(d<mind) mind = d
           }
         })
       })
@@ -195,7 +195,7 @@ async function Draw(){
           Z2 = q[2]
           if(i!=j){
             d = Math.hypot(X1-X2, Y1-Y2, Z1-Z2)
-            if(d&lt;mind*2){
+            if(d<mind*2){
               if(!a.filter(q=>q[0]==X2&&q[1]==Y2&&q[2]==Z2&&q[3]==X1&&q[4]==Y1&&q[5]==Z1).length) a = [...a, [X1*size,Y1*size,Z1*size,X2*size,Y2*size,Z2*size]]
             }
           }
@@ -214,7 +214,7 @@ async function Draw(){
 
     lineFaceI = (X1, Y1, Z1, X2, Y2, Z2, facet, autoFlipNormals=false, showNormals=false) => {
       let X_, Y_, Z_, d, m, l_,K,J,L,p
-      let I_=(A,B,M,D,E,F,G,H)=>(K=((G-E)*(B-F)-(H-F)*(A-E))/(J=(H-F)*(M-A)-(G-E)*(D-B)))>=0&&K&lt;=1&&(L=((M-A)*(B-F)-(D-B)*(A-E))/J)>=0&&L&lt;=1?[A+K*(M-A),B+K*(D-B)]:0
+      let I_=(A,B,M,D,E,F,G,H)=>(K=((G-E)*(B-F)-(H-F)*(A-E))/(J=(H-F)*(M-A)-(G-E)*(D-B)))>=0&&K<=1&&(L=((M-A)*(B-F)-(D-B)*(A-E))/J)>=0&&L<=1?[A+K*(M-A),B+K*(D-B)]:0
       let Q_=()=>[c.width/2+X_/Z_*600,c.height/2+Y_/Z_*600]
       let R_ = (Rl,Pt,Yw,m)=>{
         let M=Math, A=M.atan2, H=M.hypot
@@ -329,7 +329,7 @@ async function Draw(){
         X = S(p=Math.PI*2/6*i+Math.PI/6)*ls
         Y = C(p)*ls
         Z = 0
-        if(Y&lt;mind) mind = Y
+        if(Y<mind) mind = Y
         a = [...a, [X, Y, Z]]
       }
       let theta = .6154797086703867
@@ -500,7 +500,7 @@ async function Draw(){
     }
 
     Cube = size => {
-      for(CB=[],j=6;j--;CB=[...CB,b])for(b=[],i=4;i--;)b=[...b,[(a=[S(p=Math.PI*2/4*i+Math.PI/4),C(p),2**.5/2])[j%3]*(l=j&lt;3?size/1.5:-size/1.5),a[(j+1)%3]*l,a[(j+2)%3]*l]]
+      for(CB=[],j=6;j--;CB=[...CB,b])for(b=[],i=4;i--;)b=[...b,[(a=[S(p=Math.PI*2/4*i+Math.PI/4),C(p),2**.5/2])[j%3]*(l=j<3?size/1.5:-size/1.5),a[(j+1)%3]*l,a[(j+2)%3]*l]]
       return CB
     }
     
@@ -511,7 +511,7 @@ async function Draw(){
         a = []
         X = 0
         Y = 0
-        Z = h * (j&lt;4?-1:1)
+        Z = h * (j<4?-1:1)
         a = [...a, [X,Y,Z]]
         X = S(p=Math.PI*2/4*j) * size/1.25
         Y = C(p) * size/1.25
@@ -853,7 +853,7 @@ async function Draw(){
     Rn = Math.random
     
     LsystemRecurse = (size, splits, p1, p2, stem, theta, LsystemReduction, twistFactor) => {
-      if(size &lt; .25) return
+      if(size < .25) return
       let X1 = stem[0]
       let Y1 = stem[1]
       let Z1 = stem[2]
